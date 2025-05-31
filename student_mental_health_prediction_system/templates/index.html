@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Mental Health Prediction</title>
+    <style>
+        /* Global Styles */
+       /* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://ibcces.org/wp-content/uploads/2020/08/Student-Mental-health-silent-pandemic-student-body-in-schools.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    margin: 0;
+    padding: 0;
+    color: #060606;
+    display: flex;
+    justify-content: center;
+    background-attachment: fixed;
+    align-items: first baseline;
+}
+
+.container {
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Limit max size */
+    background: rgba(244, 242, 242, 0.553); /* Transparent white */
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.122);
+    animation: fadeIn 1s ease-in-out;
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+}
+
+
+        /* Heading */
+        h1 {
+            text-align: center;
+            color: #2115c9;
+            font-size: 24px;
+            margin-bottom: 30px;
+            position: relative;
+            forced-color-adjust: "Purple";
+        background-color: rgb(147, 191, 231);
+box-shadow: #333;
+            border-radius :3%;
+            background-position: 30%;
+            border: 50%;
+            box-decoration-break: slice;
+            background-position: 0%;
+        }
+
+        h1::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #be8c56;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Form Labels and Inputs */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #d9b6b6;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Tooltip */
+        .tooltip {
+            font-size: 12px;
+            color: #b7b7b7;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        /* Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1c32d3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #49fb08d2;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 25px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+        }
+        .checkbox-group {
+    display: flex;
+    align-items :center; 
+    margin-top: 15px;
+    width: 30%; /* Ensure it takes full width */
+    font-weight: 100;
+}
+
+.checkbox-group label {
+    display :inline-flexbox;
+    align-items : center;
+    font-size: 20px;/*crease text size for visibility */
+    color: #000000; /* Darker text for readability */
+    white-space:no-repeat 
+ /* Ensures text spans the full width */
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px; /* Space between checkbox and text */
+    transform: scale(1.2); /* Slightly increase checkbox size */
+    cursor:auto;
+}
+
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 2
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Student Mental Health Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="name">Enter Your Name:</label>
+            <input type="text" name="name" id="name" required>
+            <div class="form-group">
+                <label for="Gender">Gender:</label>
+                <select name="Gender" id="Gender" required>
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Age">Age:</label>
+                <input type="number" name="Age" id="Age" min="10" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Academic_Pressure">Academic Pressure (1-10):</label>
+                <select name="Academic_Pressure" id="Academic_Pressure" required>
+                    <option value="" disabled selected>Academic_Pressure</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value = "2">2</option>
+                    <option value = "3">3</option>
+                    <option value ="4">4</option>
+                    <option value ="5">5</option>
+                    <option value ="6">6</option>
+                    <option value ="7">7</option>
+                    <option value ="8">8</option>
+                    <option value ="9">9</option>
+                    <option value ="10">10</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="CGPA">CGPA:</label>
+                <input type="number" name="CGPA" id="CGPA" step="0.01" min="0" max="10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Study_Satisfaction">Study Satisfaction (1-10):</label>
+                <select name="Study_Satisfaction" id="Study_Satisfaction" required>
+                    <option value="" disabled selected>Study_Satisfaction</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value = "2">2</option>
+                    <option value = "3">3</option>
+                    <option value ="4">4</option>
+                    <option value ="5">5</option>
+                    <option value ="6">6</option>
+                    <option value ="7">7</option>
+                    <option value ="8">8</option>
+                    <option value ="9">9</option>
+                    <option value ="10">10</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Sleep_Duration">Sleep Duration:</label>
+                <select name="Sleep_Duration" id="Sleep_Duration" required>
+                    <option value="" disabled selected>Select sleep duration</option>
+                    <option value="0">5-6 hours</option>
+                    <option value="1">7-8 hours</option>
+                    <option value="2">Less than 5 hours</option>
+                    <option Value="3">More than 8 hours</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Dietary_Habits">Dietary Habits:</label>
+                <select name="Dietary_Habits" id="Dietary_Habits" required>
+                    <option value="" disabled selected>Select dietary habits</option>
+                    <option value="0">Healthy</option>
+                    <option value="1">Moderate</option>
+                    <option value="2">Unhealthy</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Degree">Degree:</label>
+                <select name="Degree" id="Degree" required>
+                    <option value="" disabled selected>Select your degree</option>
+                    <option value="0">B.com</option>
+                    <option value="1">BA</option>
+                    <option value="2">BCA/BBA</option>
+                    <option value="3">BSc</option>
+                    <option value="4">Class 12</option>
+                    <option value="5">M.Tech</option>
+                    <option value="6">MCA/MBA</option>
+                    <option value = "7">BTech</option>
+                    <option value="8">MSc</option>
+                    <option value ="9">MA</option>
+                    <option value ="10">M.com</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Suicidal_Thoughts">Suicidal Thoughts:</label>
+                <select name="Suicidal_Thoughts" id="Suicidal_Thoughts" required>
+                    <option value="" disabled selected>Have you had suicidal thoughts?</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Work_Study_Hours">How Much Time you Spend on Study/Work ?</label>
+                <select name="Work_Study_Hours" id="Work_Study_Hours" required>
+                    <option value="" disabled selected>Work_Study_Hours</option>
+                    <option value="0"  style="color: rgb(111, 2, 2);">0</option>
+                    <option value="1">1</option>
+                    <option value = "2">2</option>
+                    <option value = "3">3</option>
+                    <option value ="4">4</option>
+                    <option value ="5">5</option>
+                    <option value ="6">6</option>
+                    <option value ="7">7</option>
+                    <option value ="8">8</option>
+                    <option value ="9">9</option>
+                    <option value ="10">10</option>
+                    <option value = "11">11</option>
+                    <option value ="12">12</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Financial_Stress">On a Scale of 1-10, Select How much Financial Stress You are Facing</label>
+                
+                <select name="Financial_Stress" id="Financial_Stress" required>
+                    <option value="" disabled selected>Financial_Stress</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value = "2">2</option>
+                    <option value = "3">3</option>
+                    <option value ="4">4</option>
+                    <option value ="5">5</option>
+                    <option value ="6">6</option>
+                    <option value ="7">7</option>
+                    <option value ="8">8</option>
+                    <option value ="9">9</option>
+                    <option value ="10">10</option>
+                </select>
+                </div>
+
+            <div class="form-group">
+                <label for="Family_History_Mental_Illness">Family History of Mental Illness:</label>
+                <select name="Family_History_Mental_Illness" id="Family_History_Mental_Illness" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group checkbox-group"> 
+                <label for="saveData">
+                    <input type="checkbox" id="saveData" name="Save_Data" value="1" onchange="checkSaveData()">
+                    <span>Save my data for future reference</span>
+                </label>
+            </div>
+            
+            <script type="text/javascript">
+                function checkSaveData() {
+                    const saveData = document.getElementById('saveData').checked;
+                    if (saveData) {
+                        alert("We use the data only for training purposes.");
+                    }
+                }
+            </script>
+            
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
